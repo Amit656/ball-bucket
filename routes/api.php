@@ -20,5 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/buckets', [BucketController::class, 'store']);
-Route::post('/balls', [BallController::class, 'store']);
+Route::post('/buckets', [BucketController::class, 'store'])->name('buckets.store');
+Route::post('/balls', [BallController::class, 'store'])->name('balls.store');

@@ -15,7 +15,7 @@ class BallStoreRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255|unique:balls,name',
-            'volume' => 'required|number|max:999999.99'
+            'volume' => 'required|numeric|max:999999.99'
         ];
     }
 }

@@ -28,29 +28,30 @@
                 <form id="ball-form" action="#">
                     <div class="mb-3">
                         <label for="ball-name" class="form-label">Ball Name</label>
-                        <input type="text" class="form-control" id="ball-name" name="ball_name">
+                        <input type="text" class="form-control" id="ball-name" name="ball_name" required>
                     </div>
                     <div class="mb-3">
                         <label for="ball-volume" class="form-label">Ball volume(In inches)</label>
-                        <input type="text" class="form-control" id="ball-volume" name="ball_volume">
+                        <input type="text" class="form-control" id="ball-volume" name="ball_volume" required>
                     </div>
-                    <button type="submit" id="ball-form" class="btn btn-primary">Save</button>
+                    <button type="button" id="ball-form-submit" class="btn btn-primary">Save</button>
                 </form>
             </div>
         </div>
         <div class="row pt-5">
             <div class="col-sm border pb-1">
             <p class="h1">Bucket Suggestions</p>
-                <form id="ball-form" action="#">
+                <form action="#">
+                    <div id="bucket-suggestions">
+                    @foreach($balls as $ball)
                     <div class="mb-3">
-                        <label for="bucket-name" class="form-label">Bucket Name</label>
-                        <input type="text" class="form-control" id="bucket-name" name="bucker_name">
+                        <label for="{{$ball->name}}" class="form-label">{{$ball->name}}</label>
+                        <input type="text" data="{{$ball->id}}" class="form-control" id="balls" name="balls[]">
                     </div>
-                    <div class="mb-3">
-                        <label for="bucket-volume" class="form-label">Bucket volume(In inches)</label>
-                        <input type="text" class="form-control" name="bucket_volume">
+                    @endForeach
                     </div>
-                    <button type="button" class="btn btn-primary">Save</button>
+
+                    <button type="button" class="btn btn-primary" id="submit-bucket-suggestions">Save</button>
                 </form>
             </div>
             <div class="col-sm border pb-1">

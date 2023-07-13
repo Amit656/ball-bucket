@@ -19,4 +19,8 @@ class BallController extends Controller
     public function store(BallStoreRequest $request){
         return response()->json($this->ballRepository->store($request->validated()), Response::HTTP_CREATED);
     }
+
+    public function index(){
+        return response()->json($this->ballRepository->index(), Response::HTTP_OK);
+    }
 }

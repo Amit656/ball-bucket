@@ -21,4 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/buckets', [BucketController::class, 'store'])->name('buckets.store');
+Route::post('/suggest-buckets', [BucketController::class, 'suggestBuckets'])->name('buckets.suggest');
 Route::post('/balls', [BallController::class, 'store'])->name('balls.store');
+Route::get('/balls', [BallController::class, 'index'])->name('balls.index');

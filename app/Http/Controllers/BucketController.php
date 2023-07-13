@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\BucketStoreRequest;
-use App\Repository\BucketRepositoryInterface;
 use Illuminate\Http\Response;
+use App\Http\Requests\BucketStoreRequest;
+use App\Http\Requests\SuggestBucketRequest;
+use App\Repository\BucketRepositoryInterface;
 
 class BucketController extends Controller
 {
@@ -21,20 +22,9 @@ class BucketController extends Controller
         return $this->bucketRepository->store($request->validated());
     }
 
-    public function suggest()
+    public function suggestBuckets(SuggestBucketRequest $request)
     {
-        $balls = Ball::all();
-        $buckets = Bucket::all();
-
-        $minimumBuckets = 0;
-        foreach ($balls as $ball) {
-            $bucket = $this->findBucketForBall($ball, $buckets);
-            if ($bucket === null) {
-                $minimumBuckets++;
-            }
-        }
-
-        return view('ball-bucket-suggestion', compact('minimumBuckets'));
+        return $this->bucketRepository->suggestBuckets($request->validated());
     }
 
     private function findBucketForBall(Ball $ball, $buckets)

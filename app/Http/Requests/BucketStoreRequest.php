@@ -14,7 +14,7 @@ class BucketStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255|unique:buckets,name',
+            'name' => 'required|string|max:255',
             'volume' => 'required|numeric|max:999999.99'
         ];
     }

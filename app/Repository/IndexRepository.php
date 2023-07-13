@@ -6,6 +6,7 @@ namespace App\Repository;
 class IndexRepository implements IndexRepositoryInterface
 {
     public function index(){
-        return view('index');
+        $balls = app(BallRepositoryInterface::class)->index();
+        return view('index', compact('balls'));
     }
 }

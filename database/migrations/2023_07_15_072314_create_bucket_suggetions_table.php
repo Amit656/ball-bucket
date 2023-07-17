@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('buckets', function (Blueprint $table) {
+        Schema::create('bucket_suggetions', function (Blueprint $table) {
             $table->id();
-            $table->string('name',255);
-            $table->float('volume', 8,2);
-            $table->integer('ball_count');
-            $table->float('empty_volume', 8,2);
+            $table->string('ulid');
+            $table->json('bucket_suggetions');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('buckets');
+        Schema::dropIfExists('bucket_suggetions');
     }
 };

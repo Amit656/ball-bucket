@@ -16,11 +16,18 @@ $(document).ready(function() {
             },
             success: function(response) {
                 // Handle the successful response
+                $('#bucket-name').val('');
+                $('#bucket-volume').val('');
                 console.log(response);
             },
             error: function(response) {
                 // Handle the error response
-                console.log(response.responseJSON);
+
+                if(response.status == 422){
+                    alert(response.responseJSON.message);
+                    return;
+                }
+                alert('Something went wrong.');
             }
         });
     });
@@ -43,6 +50,9 @@ $(document).ready(function() {
                 // Handle the successful response
                 // console.log(response);
 
+                $('#ball-name').val('');
+                $('#ball-volume').val('');
+
                 $.ajax({
                     type: 'GET',
                     url: APP_URL + '/api/balls',
@@ -61,22 +71,21 @@ $(document).ready(function() {
                                     <input type="text" data="${data.id}" class="form-control" id="${data.name}" name="balls[${data.id}]">
                                     </div>`;
                               });
-
-                            
-
-                            console.log(html);
-
                             $('#bucket-suggestions').html(html);
                         }
                     },
                     error: function(response) {
-                        
+                        console.log(response);
+                        alert('Something went wrong.');
                     }
                 });
             },
             error: function(response) {
                 // Handle the error response
-                console.log(response.responseJSON);
+                if(response.status == 422){
+                    alert(response.responseJSON.message);
+                    return;
+                }
             }
         });
     });
@@ -84,7 +93,6 @@ $(document).ready(function() {
     $('#submit-bucket-suggestions').click(function(e) {
         e.preventDefault();
         
-        var array = [];
         let data = $("input[name='balls[]']").map(function(){
             return {'id': $(this).attr('data'), 'value': $(this).val()};
         }).get();
@@ -98,11 +106,12 @@ $(document).ready(function() {
             },
             success: function(response) {
                 // Handle the successful response
-                console.log(response);
+                $('#result').html(response);   
             },
             error: function(response) {
                 // Handle the error response
-                console.log(response.responseJSON);
+                alert('Something went wrong.');
+                console.log(response);
             }
         });
     });

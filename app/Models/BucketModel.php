@@ -9,5 +9,5 @@ class BucketModel extends Model
 {
     protected $table = 'buckets';
 
-    protected $fillable = ['name', 'volume'];
+    protected $fillable = ['name', 'volume', 'ball_count', 'empty_volume'];
 }

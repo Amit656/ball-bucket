@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  </head>
+    </head>
   <body>
   <div class="container">
         <div class="row">
@@ -57,7 +57,7 @@
             <div class="col-sm border pb-1">
             <p class="h1">Result</p>
             <p class="h3">Following are the suggested buckets</p>
-                
+            <div id="result"></div>    
             </div>
         </div>
     </div>
